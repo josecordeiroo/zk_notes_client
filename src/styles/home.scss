@@ -1,0 +1,12 @@
+@import "./custom_colors";
+
+.home {
+  background-color: $custom-purple;
+  height: calc(100% - 70px);
+}
+
+#gadgets {
+    border-radius: 20px;
+    box-shadow: rgba(0, 0, 0, 0.404) 1px 10px 10px 10px;
+  }
+
