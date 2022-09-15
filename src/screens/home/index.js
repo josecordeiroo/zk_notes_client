@@ -22,7 +22,7 @@ const Home = () => (
               <br />
               E terá tudo na sua mão em qualquer lugar. Seja pelo computador, pelo tablet e pelo celular!
             </Title>
-            <a href="/" className="button is-outlined is-white is-large">
+            <a href="/register" className="button is-outlined is-white is-large">
               <strong>Registre-se gratuitamente</strong>
             </a>
           </Column>
