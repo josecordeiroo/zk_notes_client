@@ -14,7 +14,7 @@ const Home = () => (
         <Column.Group>
           <Column size={5}>
             <Title size={2} spaced className="has-text-white">
-              Crie suas notas e tenha sempre a mão
+              Crie suas notas e tenha sempre a mão onde estiver
             </Title>
             <Title size={5} spaced className="has-text-light" subtitle>
               Lorem ipsum, or lipsum as it is sometimes known, is dummy text
