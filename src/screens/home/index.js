@@ -17,12 +17,10 @@ const Home = () => (
               Crie suas notas e tenha sempre a mão onde estiver
             </Title>
             <Title size={5} spaced className="has-text-light" subtitle>
-              Lorem ipsum, or lipsum as it is sometimes known, is dummy text
-              used in laying out print, graphic or web designs.
+              Aqui você pode salvar as suas senhas, seus compromissose suas datas importantes.
               <br />
               <br />
-              Lorem ipsum, or lipsum as it is sometimes known, is dummy text
-              used in laying out print.
+              E terá tudo na sua mão em qualquer lugar. Seja pelo computador, pelo tablet e pelo celular!
             </Title>
             <a href="/" className="button is-outlined is-white is-large">
               <strong>Registre-se gratuitamente</strong>
