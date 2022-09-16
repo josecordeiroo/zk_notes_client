@@ -14,13 +14,13 @@ const Home = () => (
         <Column.Group>
           <Column size={5}>
             <Title size={2} spaced className="has-text-white">
-              Crie suas notas e tenha na mão onde estiver.
+              Crie suas notas e tenha em mãos onde estiver.
             </Title>
             <Title size={5} spaced className="has-text-light" subtitle>
               Aqui você pode salvar as suas senhas, seus compromissos e suas datas importantes.
               <br />
               <br />
-              E terá tudo em sua mão em qualquer lugar. Seja pelo computador, pelo tablet ou celular!
+              Tendo tudo à mãos em qualquer lugar.<br /> Seja pelo computador, tablet ou celular.
             </Title>
             <a href="/register" className="button is-outlined is-white is-large">
               <strong>Registre-se gratuitamente</strong>

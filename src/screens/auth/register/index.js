@@ -1,6 +1,7 @@
 import React, { Fragment } from "react";
 
 import Header from "../../../components/header";
+import RegisterForm from "../../../components/registerForm";
 
 import { Column, Section, Title, Container, Card } from "rbx";
 
@@ -16,13 +17,15 @@ const Register = () => (
             <Column size={3}>
               <Card className="card">
                 <Card.Content>
-                  <img
+                  <img className="imagem"
                     src="https://see.fontimg.com/api/renderfont4/eZlEp/eyJyIjoiZnMiLCJoIjo2NSwidyI6MTAwMCwiZnMiOjY1LCJmZ2MiOiIjMDAwMDAwIiwiYmdjIjoiI0ZGRkZGRiIsInQiOjF9/WmtOb3Rlcw/tourism-days.png"
                     alt=""
-                    role="presentation"
-                    width="112"
-                    height="28"
+                    // role="presentation"
+                     width="170"
+                     height="28"
                   />
+                  <Title size={6}>Crie seu usuário:</Title>
+                  <RegisterForm/>
                 </Card.Content>
               </Card>
             </Column>
