@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState } from "react";
+import { redirect } from "react-router-dom";
 
 import {
   Field,
@@ -20,6 +21,8 @@ import {
   faCheck,
   faEnvelope,
   faExclamationTriangle,
+  faLock,
+  faSignature
 } from "@fortawesome/free-solid-svg-icons";
 
 const RegisterForm = () => {
@@ -28,8 +31,11 @@ const RegisterForm = () => {
       <form>
         <Field>
           <Label>Nome:</Label>
-          <Control>
+          <Control iconLeft>
             <Input type="text" placeholder="Digite seu nome" />
+            <Icon size="small" align="left">
+              <FontAwesomeIcon icon={faSignature} />
+            </Icon>
           </Control>
         </Field>
         <Field>
@@ -62,6 +68,25 @@ const RegisterForm = () => {
             />
             <Icon size="small" align="left">
               <FontAwesomeIcon icon={faEnvelope} />
+            </Icon>
+            {/* <Icon size="small" align="right">
+              <FontAwesomeIcon icon={faExclamationTriangle} />
+            </Icon> */}
+          </Control>
+          {/* <Help color="danger">This email is invalid</Help> */}
+        </Field>
+
+        <Field>
+          <Label>Senha:</Label>
+          <Control iconLeft iconRight>
+            <Input
+              //   color="danger"
+              defaultValue=""
+              placeholder="Digite sua senha"
+              type="text"
+            />
+            <Icon size="small" align="left">
+              <FontAwesomeIcon icon={faLock} />
             </Icon>
             {/* <Icon size="small" align="right">
               <FontAwesomeIcon icon={faExclamationTriangle} />
