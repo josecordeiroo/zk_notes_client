@@ -36,7 +36,7 @@ const Header = () => {
           <Navbar.Segment align="end">
             
               <Button.Group>
-                <Link to="register">
+                <Link to="/register">
                   <Button color="primary">
                     <strong>Criar conta</strong>
                   </Button>

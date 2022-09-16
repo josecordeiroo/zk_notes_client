@@ -1,0 +1,12 @@
+@import "./custom_colors";
+
+.auth {
+  background-color: $custom-purple;
+  height: calc(100% - 70px);
+}
+
+.card {
+    box-shadow: rgba(0, 0, 0, 0.404) 1px 1px 10px 6px;
+    border-radius: 20px;
+}
+

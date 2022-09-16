@@ -13,7 +13,7 @@ const RoutesTwo = () => {
   return (
     <Routes>
       <Route path="/" element={<Home />} />
-      <Route path='/register' element={<Register/>} />
+      <Route path="/register" element={<Register/>} />
       <Route path='/login' element={<Login/>} />
       <Route path='/notes' element={<Notes/>} />
       <Route path='/users/edit' element={<UserEdit/>} />
