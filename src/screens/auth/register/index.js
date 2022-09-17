@@ -21,9 +21,7 @@ const Register = () => (
                 <Card.Content>
                   <img className="imagem"
                     src={logoImage}
-                    alt=""
-                    // role="presentation"
-                     width="170"
+                    alt="" width="150"
                   />
                   <p style={{color:"gray", textAlign: "center", paddingBottom: "20px"}}>Crie sua conta gratuitamente</p>
                   <RegisterForm/>
