@@ -6,6 +6,8 @@ import { Column, Section, Title, Container } from "rbx";
 
 import "../../styles/home.scss";
 
+import logoImage from "../../assets/images/principal.jpg";
+
 const Home = () => (
   <Fragment>
     <Header />
@@ -27,7 +29,7 @@ const Home = () => (
             </a>
           </Column>
           <Column size={6} offset={1}>
-          <img id="gadgets" src="https://images.pexels.com/photos/4300393/pexels-photo-4300393.png?cs=srgb&dl=pexels-dominika-roseclay-4300393.jpg&fm=jpg" alt=""/>
+          <img id="gadgets" src={logoImage} alt=""/>
           </Column>
         </Column.Group>
       </Container>

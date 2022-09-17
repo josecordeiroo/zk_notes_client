@@ -21,7 +21,7 @@ import {
 const LoginForm = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [redirectToLogin, setRedirectToLogin] = useState(false);
+  const [redirectToNotes, setRedirectToNotes] = useState(false);
   const [error, setError] = useState(false);
 
   const HandleSubmit = async (evt) => {
@@ -37,7 +37,7 @@ const LoginForm = () => {
     }
   };
 
-  if (redirectToLogin) return <Navigate to={{ pathname: "/" }} />;
+  if (redirectToNotes) return <Navigate to={{ pathname: "/" }} />;
 
   return (
     <>
