@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-
-import { Navigate } from 'react-router-dom';
+import { Navigate } from "react-router-dom";
+import UsersService from "../../../services/users";
 
 import {
   Field,
@@ -34,11 +34,26 @@ const RegisterForm = () => {
   const [redirectToLogin, setRedirectToLogin] = useState(false);
   const [error, setError] = useState(false);
 
+  const HandleSubmit = async (evt) => {
+    evt.preventDefault();
+    try {
+      const user = await UsersService.register({
+        name: name,
+        email: email,
+        userName: userName,
+        password: password,
+      });
+      setRedirectToLogin(true)
+    } catch (error) {
+      setError(true)
+    }
+  };
+
   if (redirectToLogin) return <Navigate to={{ pathname: "/login" }} />;
 
   return (
     <>
-      <form>
+      <form onSubmit={HandleSubmit}>
         <Field>
           <Label>Nome:</Label>
           <Control iconLeft>

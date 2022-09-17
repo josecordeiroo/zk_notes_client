@@ -1,7 +1,7 @@
 import React, { Fragment } from "react";
 
 import Header from "../../../components/header";
-import RegisterForm from "../../../components/registerForm";
+import RegisterForm from "../../../components/auth/register_form";
 
 import { Column, Section, Title, Container, Card } from "rbx";
 
