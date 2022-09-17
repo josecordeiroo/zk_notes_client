@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { redirect } from "react-router-dom";
+
+import { Navigate } from 'react-router-dom';
 
 import {
   Field,
@@ -22,17 +23,32 @@ import {
   faEnvelope,
   faExclamationTriangle,
   faLock,
-  faSignature
+  faSignature,
 } from "@fortawesome/free-solid-svg-icons";
 
 const RegisterForm = () => {
+  const [name, setName] = useState("");
+  const [userName, setUserName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [redirectToLogin, setRedirectToLogin] = useState(false);
+  const [error, setError] = useState(false);
+
+  if (redirectToLogin) return <Navigate to={{ pathname: "/login" }} />;
+
   return (
     <>
       <form>
         <Field>
           <Label>Nome:</Label>
           <Control iconLeft>
-            <Input type="text" placeholder="Digite seu nome" />
+            <Input
+              type="name"
+              placeholder="Digite seu nome"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              required
+            />
             <Icon size="small" align="left">
               <FontAwesomeIcon icon={faSignature} />
             </Icon>
@@ -43,6 +59,9 @@ const RegisterForm = () => {
           <Control iconLeft iconRight>
             <Input
               //   color="success"
+              value={userName}
+              onChange={(e) => setUserName(e.target.value)}
+              required
               defaultValue=""
               placeholder="Nome de usuário"
               type="text"
@@ -62,6 +81,9 @@ const RegisterForm = () => {
           <Control iconLeft iconRight>
             <Input
               //   color="danger"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
               defaultValue=""
               placeholder="Digite seu e-mail"
               type="email"
@@ -81,6 +103,9 @@ const RegisterForm = () => {
           <Control iconLeft iconRight>
             <Input
               //   color="danger"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
               defaultValue=""
               placeholder="Digite sua senha"
               type="text"
@@ -95,7 +120,7 @@ const RegisterForm = () => {
           {/* <Help color="danger">This email is invalid</Help> */}
         </Field>
 
-        <Field>
+        {/* <Field>
           <Label>Gênero:</Label>
           <Control>
             <Select.Container fullwidth>
@@ -105,7 +130,7 @@ const RegisterForm = () => {
               </Select>
             </Select.Container>
           </Control>
-        </Field>
+        </Field> */}
 
         <Field kind="group" align="centered">
           <Control>
@@ -127,12 +152,13 @@ const RegisterForm = () => {
 
         <Field kind="group" align="centered">
           <Control>
-            <Button color="link">Criar cadastro</Button>
+            <Button color="link">Cadastrar</Button>
           </Control>
           {/* <Control>
             <Button text>Cancelar</Button>
           </Control> */}
         </Field>
+        {error && <Help color="danger">E-mail ou senha inválidos</Help>}
       </form>
     </>
   );

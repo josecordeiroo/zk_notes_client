@@ -42,7 +42,7 @@ const Header = () => {
                   </Button>
                 </Link>
                 &nbsp;
-                <Link to="login">
+                <Link to="/login">
                   <Button color="light">Entrar</Button>
                 </Link>
               </Button.Group>

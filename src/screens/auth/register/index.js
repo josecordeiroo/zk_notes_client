@@ -22,9 +22,8 @@ const Register = () => (
                     alt=""
                     // role="presentation"
                      width="170"
-                     height="28"
                   />
-                  <Title size={6}>Crie seu usuário:</Title>
+                  <p style={{color:"gray", textAlign: "center", paddingBottom: "20px"}}>Suas notas sempre na sua mão.</p>
                   <RegisterForm/>
                 </Card.Content>
               </Card>
