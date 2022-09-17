@@ -8,7 +8,7 @@ import logoImage from "../../assets/images/ZkNotes.png";
 
 import UsersService from "../../services/users";
 
-const HeaderLogged = () => {
+const HeaderLogged = (props) => {
   return (
     <Container>
       <Navbar>
@@ -30,9 +30,21 @@ const HeaderLogged = () => {
           <Navbar.Burger />
         </Navbar.Brand>
         <Navbar.Menu>
+        <Navbar.Segment as="div" className="navbar-item navbar-start" align="start">
+            <Navbar.Item as="div">
+              <Button
+                className="open-button"
+                outlined
+                onClick={() => props.setIsOpen(true)}
+              >
+                Clique aqui
+              </Button>
+            </Navbar.Item>
+          </Navbar.Segment>
           <Navbar.Segment align="start">
             <Navbar.Item dropdown>
               <Navbar.Link>Bem vindo, Zeca Cordeiro</Navbar.Link>
+
               <Navbar.Dropdown>
                 <Navbar.Item>Editar seus dados</Navbar.Item>
                 <Navbar.Divider />

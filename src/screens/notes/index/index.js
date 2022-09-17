@@ -1,11 +1,15 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useState } from "react";
 
 import { Navigate } from "react-router-dom";
 import HeaderLogged from "../../../components/header_logged";
 
 import Notes from "../../../components/notes";
 
+
+
 const NotesScreen = () => {
+  const[isOpen, setIsOpen] = useState(false)
+
   if (!localStorage.getItem("user")) {
     return (
       <Navigate
@@ -18,9 +22,9 @@ const NotesScreen = () => {
 
   return (
     <>
-      <HeaderLogged />
+      <HeaderLogged setIsOpen={setIsOpen} />
       <Fragment>
-        <Notes />
+        <Notes isOpen={isOpen} setIsOpen={setIsOpen}/>
       </Fragment>
     </>
   );
