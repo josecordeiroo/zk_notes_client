@@ -2,21 +2,10 @@ import React, { useState } from "react";
 import { Navigate } from "react-router-dom";
 import UsersService from "../../../services/users";
 
-import {
-  Field,
-  Label,
-  Control,
-  Input,
-  Help,
-  Icon,
-  Button,
-} from "rbx";
+import { Field, Label, Control, Input, Help, Icon, Button } from "rbx";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faUser,
-  faLock,
-} from "@fortawesome/free-solid-svg-icons";
+import { faUser, faLock } from "@fortawesome/free-solid-svg-icons";
 
 const LoginForm = () => {
   const [email, setEmail] = useState("");
@@ -31,9 +20,9 @@ const LoginForm = () => {
         email: email,
         password: password,
       });
-      // setRedirectToLogin(true)
+      // setRedirectToNotes(true)
     } catch (error) {
-      setError(true)
+      setError(true);
     }
   };
 
@@ -90,12 +79,17 @@ const LoginForm = () => {
           <Control>
             <Button color="link">Entrar</Button>
           </Control>
-          {/* <Control>
-            <Button text>Cancelar</Button>
-          </Control> */}
         </Field>
+
         {error && <Help color="danger">E-mail ou senha inválidos</Help>}
-      </form>
+      </form><br/>
+      <Field kind="group" align="centered">
+        <Control align="center">
+          <a href="/register">
+            <Button text>Ainda não tem uma conta?</Button>
+          </a>
+        </Control>
+      </Field>
     </>
   );
 };

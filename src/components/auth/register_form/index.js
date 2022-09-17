@@ -43,9 +43,9 @@ const RegisterForm = () => {
         userName: userName,
         password: password,
       });
-      setRedirectToLogin(true)
+      setRedirectToLogin(true);
     } catch (error) {
-      setError(true)
+      setError(true);
     }
   };
 
@@ -175,6 +175,14 @@ const RegisterForm = () => {
         </Field>
         {error && <Help color="danger">E-mail ou senha inválidos</Help>}
       </form>
+      <br />
+      <Field kind="group" align="centered">
+        <Control align="center">
+          <a href="/login">
+            <Button text>Deseja fazer login?</Button>
+          </a>
+        </Control>
+      </Field>
     </>
   );
 };
