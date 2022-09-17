@@ -1,23 +1,30 @@
 import React from "react";
 
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 
 import { Navbar, Button, Container } from "rbx";
+
+import logoImage from "../../assets/images/ZkNotes.png";
 
 const Header = () => {
   return (
     <Container>
       <Navbar>
         <Navbar.Brand>
-          <Navbar.Item href="/">
+          <a href="/">
             <img
-              src="https://see.fontimg.com/api/renderfont4/eZlEp/eyJyIjoiZnMiLCJoIjo2NSwidyI6MTAwMCwiZnMiOjY1LCJmZ2MiOiIjMDAwMDAwIiwiYmdjIjoiI0ZGRkZGRiIsInQiOjF9/WmtOb3Rlcw/tourism-days.png"
+              src={logoImage}
               alt=""
-              role="presentation"
-              width="112"
-              height="28"
+              // role="presentation"
+              // width="112"
+              // height="28"
+              style={{
+                width: "130px",
+                margin: "10px 10px 0 20px"
+              }}
             />
-          </Navbar.Item>
+          </a>
+
           <Navbar.Burger />
         </Navbar.Brand>
         <Navbar.Menu>
@@ -34,19 +41,17 @@ const Header = () => {
           </Navbar.Segment>
 
           <Navbar.Segment align="end">
-            
-              <Button.Group>
-                <Link to="/register">
-                  <Button color="primary">
-                    <strong>Criar conta</strong>
-                  </Button>
-                </Link>
-                &nbsp;
-                <Link to="/login">
-                  <Button color="light">Entrar</Button>
-                </Link>
-              </Button.Group>
-            
+            <Button.Group>
+              <Link to="/register">
+                <Button color="primary">
+                  <strong>Criar conta</strong>
+                </Button>
+              </Link>
+              &nbsp;
+              <Link to="/login">
+                <Button color="light">Entrar</Button>
+              </Link>
+            </Button.Group>
           </Navbar.Segment>
         </Navbar.Menu>
       </Navbar>

@@ -7,6 +7,8 @@ import { Column, Section, Title, Container, Card } from "rbx";
 
 import "../../../styles/auth.scss";
 
+import logoImage from '../../../assets/images/ZkNotes.png'
+
 const Register = () => (
   <Fragment>
     <Fragment>
@@ -18,12 +20,12 @@ const Register = () => (
               <Card className="card">
                 <Card.Content>
                   <img className="imagem"
-                    src="https://see.fontimg.com/api/renderfont4/eZlEp/eyJyIjoiZnMiLCJoIjo2NSwidyI6MTAwMCwiZnMiOjY1LCJmZ2MiOiIjMDAwMDAwIiwiYmdjIjoiI0ZGRkZGRiIsInQiOjF9/WmtOb3Rlcw/tourism-days.png"
+                    src={logoImage}
                     alt=""
                     // role="presentation"
                      width="170"
                   />
-                  <p style={{color:"gray", textAlign: "center", paddingBottom: "20px"}}>Suas notas sempre na sua mão.</p>
+                  <p style={{color:"gray", textAlign: "center", paddingBottom: "20px"}}>Crie sua conta gratuitamente</p>
                   <RegisterForm/>
                 </Card.Content>
               </Card>
