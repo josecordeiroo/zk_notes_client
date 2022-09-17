@@ -20,13 +20,13 @@ const LoginForm = () => {
         email: email,
         password: password,
       });
-      // setRedirectToNotes(true)
+      setRedirectToNotes(true)
     } catch (error) {
       setError(true);
     }
   };
 
-  if (redirectToNotes) return <Navigate to={{ pathname: "/" }} />;
+  if (redirectToNotes) return <Navigate to={{ pathname: "/notes" }} />;
 
   return (
     <>
