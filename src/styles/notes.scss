@@ -1,0 +1,8 @@
+@import "./custom_colors";
+
+.notesStyle {
+  background-color: $custom-grey;
+  height: calc(100% - 70px);
+  margin-left: 0;
+  margin-right: 0;
+}
