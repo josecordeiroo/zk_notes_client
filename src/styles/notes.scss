@@ -1,7 +1,7 @@
 @import "./custom_colors";
 
 .notesStyle {
-  background-color: $custom-grey;
+  background-color: green;
   height: calc(100% - 70px);
   margin-left: 0;
   margin-right: 0;
@@ -23,13 +23,15 @@
 // }
 
 .list-item-is-active {
-    background-color: white;
+  background-color: white;
 }
 
 .tag {
   margin-bottom: 10px;
 }
 
-button{
+button {
   margin-bottom: 20px;
 }
+
+
