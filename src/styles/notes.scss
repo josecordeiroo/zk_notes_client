@@ -8,12 +8,24 @@
   margin-top: 0;
 }
 
-.bm-menu{
-    background-color: rgba(0, 0, 255, 0.285);
-    padding-top: 10px;
-    color: white;
+.bm-menu {
+  background-color: rgba(0, 0, 255, 0.285);
+  padding-left: 30px;
+  color: white;
 }
 
 #react-burger-menu-btn {
-    display: none;
+  display: none;
+}
+
+// .list-item{
+
+// }
+
+.list-item-is-active {
+    background-color: white;
+}
+
+.tag {
+  margin-bottom: 10px;
 }
