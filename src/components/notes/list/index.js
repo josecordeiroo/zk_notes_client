@@ -10,10 +10,16 @@ const ListNotes = (props) => {
         <Column size={6} offset={1}>
           <Title size={6}>{props.notes.length} notas</Title>
         </Column>
-        <Column size={6} offset={1}>
-          <Button state="active" color="custom-purple" outlined size="small" onClick={() => props.createNote()}>Nova Nota</Button>
-        </Column>
       </ColumnGroup>
+      <Button
+        state="active"
+        color="custom-purple"
+        outlined
+        size="small"
+        onClick={() => props.createNote()}
+      >
+        Nova Nota
+      </Button>
       <List>
         {props.notes.map((item, key) => (
           <List.Item
