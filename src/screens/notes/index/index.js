@@ -5,7 +5,7 @@ import HeaderLogged from "../../../components/header_logged";
 
 import Notes from "../../../components/notes";
 
-
+import "../../../styles/notes.scss";
 
 const NotesScreen = () => {
   const[isOpen, setIsOpen] = useState(false)
@@ -23,7 +23,7 @@ const NotesScreen = () => {
   return (
     <>
       <HeaderLogged setIsOpen={setIsOpen} />
-      <Fragment>
+      <Fragment className="notesStyle">
         <Notes isOpen={isOpen} setIsOpen={setIsOpen}/>
       </Fragment>
     </>

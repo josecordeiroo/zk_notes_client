@@ -2,7 +2,7 @@ import { Column } from "rbx";
 import { ColumnGroup } from "rbx/grid/columns/column-group";
 import React, { useState, Fragment } from "react";
 
-import { slide as Menu } from "react-burger-menu";
+import { push as Menu } from "react-burger-menu";
 
 import "../../styles/notes.scss";
 
@@ -23,8 +23,11 @@ const Notes = (props) => {
             <Column size={10} offset={1}>
               Search...
             </Column>
+
+            <Column size={10} offset={1}>
+              List...
+            </Column>
           </ColumnGroup>
-          <p>List</p>
         </Menu>
         <Column size={12} className="notes-editor" id="notes-editor">
           Editor...

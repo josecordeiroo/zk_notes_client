@@ -2,11 +2,14 @@ import React from "react";
 
 import { Link, Navigate } from "react-router-dom";
 
-import { Navbar, Button, Container } from "rbx";
+import { Navbar, Button, Container, Icon } from "rbx";
 
 import logoImage from "../../assets/images/ZkNotes.png";
 
 import UsersService from "../../services/users";
+
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faList } from "@fortawesome/free-solid-svg-icons";
 
 const HeaderLogged = (props) => {
   return (
@@ -30,14 +33,20 @@ const HeaderLogged = (props) => {
           <Navbar.Burger />
         </Navbar.Brand>
         <Navbar.Menu>
-        <Navbar.Segment as="div" className="navbar-item navbar-start" align="start">
+          <Navbar.Segment
+            as="div"
+            className="navbar-item navbar-start"
+            align="start"
+          >
             <Navbar.Item as="div">
               <Button
                 className="open-button"
                 outlined
                 onClick={() => props.setIsOpen(true)}
               >
-                Clique aqui
+                <Icon size="small" align="left">
+                  <FontAwesomeIcon icon={faList} />
+                </Icon>
               </Button>
             </Navbar.Item>
           </Navbar.Segment>
