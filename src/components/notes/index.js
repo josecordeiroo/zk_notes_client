@@ -25,6 +25,11 @@ const Notes = (props) => {
     }
   }
 
+  const createNote = async () => {
+    await NotesServices.create()
+    fetchNotes()
+  }
+
   const selectNote = (id) => {
     const note = notes.find((note) => {
       return note._id == id;
@@ -57,6 +62,7 @@ const Notes = (props) => {
               notes={notes}
               selectNote={selectNote}
               currentNote={currentNote}
+              createNote={createNote}
             ></ListNotes>
           </ColumnGroup>
         </Menu>

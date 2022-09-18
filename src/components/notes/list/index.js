@@ -1,4 +1,4 @@
-import { Column, Title, List, Tag } from "rbx";
+import { Button, Column, Title, List, Tag } from "rbx";
 import { ColumnGroup } from "rbx/grid/columns/column-group";
 import React, { Fragment } from "react";
 import Moment from "moment";
@@ -9,6 +9,9 @@ const ListNotes = (props) => {
       <ColumnGroup breakpoint="mobile">
         <Column size={6} offset={1}>
           <Title size={6}>{props.notes.length} notas</Title>
+        </Column>
+        <Column size={6} offset={1}>
+          <Button state="active" color="custom-purple" outlined size="small" onClick={() => props.createNote()}>Nova Nota</Button>
         </Column>
       </ColumnGroup>
       <List>

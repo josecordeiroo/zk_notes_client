@@ -5,6 +5,14 @@ const NotesServices = {
     Api.get("/notes", {
       headers: { "x-access-token": localStorage.getItem("token") },
     }),
+  create: () =>
+    Api.post(
+      "/notes",
+      { title: "Nova Nota", body: "Nova Nota..." },
+      {
+        headers: { "x-access-token": localStorage.getItem("token") },
+      }
+    ),
 };
 
 export default NotesServices;
