@@ -2,19 +2,47 @@ import { Icon, Title } from "rbx";
 import React, { Fragment, useState } from "react";
 import Moment from "moment";
 
-import { Modal, Button,  Form } from "react-bootstrap";
+import { Modal, Button, Form } from "react-bootstrap";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash, faFilePen } from "@fortawesome/free-solid-svg-icons";
 
-import Dialog from "../dialog";
+import CreateNote from "../modals/create_note"
+import EditNote from "../modals/edit_note"
+import DeleteNote from "../modals/delete_note"
+import ShowNote from "../modals/show_note"
 
 const ListNotes = (props) => {
-  const [show, setShow] = useState(false);
+  const [createShow, setCreateShow] = useState(false);
+  const [editShow, setEditShow] = useState(false);
+  const [deleteShow, setDeleteShow] = useState(false);
+  const [viewShow, setViewShow] = useState(false);
+  const [note, setNote] = useState({
+    "title": "",
+    "body": ""
+  })
 
-  const handleShow = () => {
-    ;
-  };
+  const handleShow = {
+    create: (note) => {
+      setNote(note)
+      setCreateShow(true)
+    },
+    edit: (note) => {
+      setNote(note)
+      setEditShow(true)
+    },
+    delete: (note) => {
+      setNote(note)
+      setDeleteShow(true)
+    },
+    show: (note) => {
+      setNote(note)
+      setViewShow(true)
+    }
+    
+  } 
+    
+    
 
   return (
     <>
@@ -41,9 +69,9 @@ const ListNotes = (props) => {
       </div>
       <div className="boxNotes">
         {props.notes.map((item, key) => (
-          <div className="boxNote" key={key}>
+          <div className="boxNote" key={key} onClick={() => handleShow.show(item)}>
             <div className="boxTop">
-              <button onClick={() => setShow(true)}>
+              <button onClick={() => setEditShow(true)}>
                 <FontAwesomeIcon icon={faFilePen} color="success" />
               </button>
               <button onClick={() => props.deleteNote(item._id)}>
@@ -62,44 +90,11 @@ const ListNotes = (props) => {
         ))}
       </div>
 
-      <Modal
-      show={show}
-      onHide={() => setShow(false)}
-      backdrop="static"
-      keyboard={false}
-      size="lg"
-    >
-     <Modal.Header closeButton>
-          <Modal.Title>Editar Nota</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-          <Form>
-            <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-              <Form.Label>Título:</Form.Label>
-              <Form.Control
-                type="email"
-                placeholder=""
-                autoFocus
-              />
-            </Form.Group>
-            <Form.Group
-              className="mb-3"
-              controlId="exampleForm.ControlTextarea1"
-            >
-              <Form.Label>Texto:</Form.Label>
-              <Form.Control as="textarea" rows={3} />
-            </Form.Group>
-          </Form>
-        </Modal.Body>
-        <Modal.Footer>
-          <Button variant="danger" onClick={() => setShow(false)}>
-            Cancelar
-          </Button>
-          <Button variant="success">
-            Confirmar
-          </Button>
-        </Modal.Footer>
-    </Modal>
+      <CreateNote note={note} show={createShow} setShow={setCreateShow} />
+      <EditNote note={note} show={editShow} setShow={setEditShow} />
+      <DeleteNote note={note} show={deleteShow} setShow={setDeleteShow} />
+      <ShowNote note={note} show={viewShow} setShow={setViewShow} />
+      
     </>
   );
 };
