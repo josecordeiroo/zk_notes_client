@@ -1,73 +1,106 @@
-import { Icon, Button, Column, Title, List, Tag } from "rbx";
-import { ColumnGroup } from "rbx/grid/columns/column-group";
-import React, { Fragment } from "react";
+import { Icon, Title } from "rbx";
+import React, { Fragment, useState } from "react";
 import Moment from "moment";
 
+import { Modal, Button,  Form } from "react-bootstrap";
+
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTrash } from "@fortawesome/free-solid-svg-icons";
+import { faTrash, faFilePen } from "@fortawesome/free-solid-svg-icons";
+
+import Dialog from "../dialog";
 
 const ListNotes = (props) => {
+  const [show, setShow] = useState(false);
+
+  const handleShow = () => {
+    ;
+  };
+
   return (
-    <Fragment>
-      <ColumnGroup breakpoint="mobile">
-        <Column size={6} offset={1}>
+    <>
+      <div className="headerNotes">
+        <div className="headerTexts">
+          <h1>Seja bem vindo as suas notas, Zeca</h1>
           {props.notes.length == 0 ? (
-            <Title size={6}>
-              Você não possui notas ainda. Clique abaixo e crie a primeira!
-            </Title>
+            <p size={6}>Você não possui notas ainda. Clique em criar nota.</p>
           ) : props.notes.length == 1 ? (
-            <Title size={6}>{props.notes.length} nota</Title>
+            <p size={6}>{props.notes.length} nota criada até o momento.</p>
           ) : (
-            <Title size={6}>{props.notes.length} notas</Title>
+            <p size={6}>{props.notes.length} notas criadas até o momento.</p>
           )}
-        </Column>
-      </ColumnGroup>
-      <Button
-        state="active"
-        color="custom-purple"
-        outlined
-        size="small"
-        onClick={() => props.createNote()}
-      >
-        Nova Nota
-      </Button>
-      <List>
+        </div>
+        <button
+          state="active"
+          color="custom-purple"
+          outlined
+          size="small"
+          onClick={() => props.createNote()}
+        >
+          Criar nota
+        </button>
+      </div>
+      <div className="boxNotes">
         {props.notes.map((item, key) => (
-          <List.Item
-            key={key}
-            onClick={() => props.selectNote(item._id)}
-            active={item == props.currentNote}
-          >
-            <Tag rounded color="light">
-              {Moment(item.created_at).format("DD/MM")}
-            </Tag>
-            <Title size={6}>
-              {item.title.replace(/(<([^>]+)>)/gi, "").substring(0, 15)}
-            </Title>
-            <Title size={6} subtitle spaced={false}>
-              {item.body.replace(/(<([^>]+)>)/gi, "").substring(0, 30)}
-            </Title>
-
-            <Button
-              align="right"
-              state="active"
-              color="danger"
-              rounded
-              size="small"
-              onClick={() => props.deleteNote(item._id)}
-            >
-              <Icon size="small" align="right">
-                <FontAwesomeIcon icon={faTrash} />
-              </Icon>
-            </Button>
-
-            <ColumnGroup breakpoint="mobile">
-              <Column size={10}></Column>
-            </ColumnGroup>
-          </List.Item>
+          <div className="boxNote" key={key}>
+            <div className="boxTop">
+              <button onClick={() => setShow(true)}>
+                <FontAwesomeIcon icon={faFilePen} color="success" />
+              </button>
+              <button onClick={() => props.deleteNote(item._id)}>
+                <FontAwesomeIcon icon={faTrash} color="red" />
+              </button>
+            </div>
+            <div className="boxInfos">
+              <Title as="p">{item.title}</Title>
+              {item.body.length >= 30 ? (
+                <p>{item.body.substring(0, 200)}... (clique para ver mais)</p>
+              ) : (
+                <p>{item.body}</p>
+              )}
+            </div>
+          </div>
         ))}
-      </List>
-    </Fragment>
+      </div>
+
+      <Modal
+      show={show}
+      onHide={() => setShow(false)}
+      backdrop="static"
+      keyboard={false}
+      size="lg"
+    >
+     <Modal.Header closeButton>
+          <Modal.Title>Editar Nota</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <Form>
+            <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+              <Form.Label>Título:</Form.Label>
+              <Form.Control
+                type="email"
+                placeholder=""
+                autoFocus
+              />
+            </Form.Group>
+            <Form.Group
+              className="mb-3"
+              controlId="exampleForm.ControlTextarea1"
+            >
+              <Form.Label>Texto:</Form.Label>
+              <Form.Control as="textarea" rows={3} />
+            </Form.Group>
+          </Form>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="danger" onClick={() => setShow(false)}>
+            Cancelar
+          </Button>
+          <Button variant="success">
+            Confirmar
+          </Button>
+        </Modal.Footer>
+    </Modal>
+    </>
   );
 };
 

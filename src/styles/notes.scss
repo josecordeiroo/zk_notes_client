@@ -1,37 +1,75 @@
 @import "./custom_colors";
 
 .notesStyle {
-  background-color: green;
-  height: calc(100% - 70px);
+  background-color: $custom-purple;
+  min-height: calc(100% - 70px);
   margin-left: 0;
   margin-right: 0;
   margin-top: 0;
 }
 
-.bm-menu {
-  background-color: rgba(0, 0, 255, 0.285);
-  padding-left: 30px;
+.headerNotes {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 40px 20px 40px;
+  button {
+    background-color: #4caf50;
+    border: none;
+    width: 150px;
+    height: 60px;
+    border-radius: 10px;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    font-size: 25px;
+    box-shadow: black 5px 5px 10px;
+    margin-right: 30px;
+  }
+}
+
+.headerTexts {
   color: white;
+  font-size: 50px;
+  p {
+    font-size: 20px;
+  }
 }
 
-#react-burger-menu-btn {
-  display: none;
+.boxNotes {
+  display: grid;
+  grid-template-columns: auto auto auto auto auto auto;
+  grid-column-gap: 1rem;
+  grid-row-gap: 1rem;
+  margin: 20px 40px 0px 40px;
+  @media (max-width: 1200px) {
+    display: flex;
+    flex-direction: column;
+  }
 }
 
-// .list-item{
-
-// }
-
-.list-item-is-active {
-  background-color: white;
+.boxNote {
+  background: rgb(255, 255, 255);
+  min-height: 30vh;
+  max-width: 400px;
+  text-align: center;
+  border-radius: 10px;
+  cursor: pointer;
+  overflow: hidden;
+  box-shadow: black 5px 5px 10px;
+  margin: 5px;
+  padding: 20px;
 }
 
-.tag {
-  margin-bottom: 10px;
+.boxInfos {
+  text-align: center;
 }
 
-button {
-  margin-bottom: 20px;
+.boxTop{
+  display: flex;
+  justify-content: right;
+  button{
+    margin: 0 10px 20px 0;
+    cursor: pointer;
+  }
 }
-
-

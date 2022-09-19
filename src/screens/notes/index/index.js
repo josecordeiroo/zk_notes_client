@@ -23,9 +23,9 @@ const NotesScreen = () => {
   return (
     <>
       <HeaderLogged setIsOpen={setIsOpen} />
-      <Fragment className="notesStyle">
+      <div className="notesStyle">
         <Notes isOpen={isOpen} setIsOpen={setIsOpen}/>
-      </Fragment>
+      </div>
     </>
   );
 };

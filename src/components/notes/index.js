@@ -2,14 +2,12 @@ import { Column } from "rbx";
 import { ColumnGroup } from "rbx/grid/columns/column-group";
 import React, { useState, Fragment, useEffect } from "react";
 
-import { push as Menu } from "react-burger-menu";
+// import { push as Menu } from "react-burger-menu";
 
 import "../../styles/notes.scss";
 
 import ListNotes from "./list";
 import NotesServices from "../../services/notes";
-
-import Editor from "./editor";
 
 const Notes = (props) => {
   const [notes, setNotes] = useState([]);
@@ -49,35 +47,15 @@ const Notes = (props) => {
   }, []);
 
   return (
-    <Fragment className="notesStyle">
-      <ColumnGroup>
-        <Menu
-          pageWrapId={"notes-editor"}
-          isOpen={props.isOpen}
-          onStateChange={(state) => props.setIsOpen(state.isOpen)}
-          disableAutoFocus
-          outerContainerId={"notes"}
-          customBurguerIcon={false}
-          customCrossIcon={false}
-        >
-          <ColumnGroup>
-            <Column size={10} offset={1}>
-              Search...
-            </Column>
-
-            <ListNotes
-              notes={notes}
-              selectNote={selectNote}
-              currentNote={currentNote}
-              createNote={createNote}
-              deleteNote={deleteNote}
-            ></ListNotes>
-          </ColumnGroup>
-        </Menu>
-        <Column size={12} className="notes-editor" id="notes-editor">
-          <Editor note={currentNote} />
-        </Column>
-      </ColumnGroup>
+    <Fragment>
+      
+      <ListNotes
+        notes={notes}
+        selectNote={selectNote}
+        currentNote={currentNote}
+        createNote={createNote}
+        deleteNote={deleteNote}
+      ></ListNotes>
     </Fragment>
   );
 };

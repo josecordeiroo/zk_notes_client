@@ -2,9 +2,10 @@
 @import "~bulma/sass/utilities/functions";
 @import "./styles/custom_colors.scss";
 
+
 $custom-colors: (
-  "custom-purple": ($custom-purple),
-  "custom-purple-darker": ($custom-purple-darker)
+"custom-purple": ($custom-purple),
+"custom-purple-darker": ($custom-purple-darker)
 );
 
 // Import Bulma styles
@@ -12,3 +13,6 @@ $custom-colors: (
 
 // Import rbx style fixes
 @import "~rbx/rbx";
+
+// Import react bootstrap style
+@import "~bootstrap/scss/bootstrap";
