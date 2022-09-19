@@ -12,11 +12,14 @@ function ShowNote({note, show, setShow}) {
           <Modal.Title>{note.title}</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          {note.body}
+          <p style={{padding: "10px"}}>{note.body}</p>
         </Modal.Body>
         <Modal.Footer>
           <Button variant="danger" onClick={() => setShow(false)}>
-            Fechar
+            Cancelar
+          </Button>
+          <Button variant="success">
+            Confirmar
           </Button>
         </Modal.Footer>
     </Modal>

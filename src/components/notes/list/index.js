@@ -69,7 +69,7 @@ const ListNotes = (props) => {
       </div>
       <div className="boxNotes">
         {props.notes.map((item, key) => (
-          <div className="boxNote" key={key} onClick={() => handleShow.show(item)}>
+          <button className="boxNote" key={key}>
             <div className="boxTop">
               <button onClick={() => setEditShow(true)}>
                 <FontAwesomeIcon icon={faFilePen} color="success" />
@@ -78,7 +78,7 @@ const ListNotes = (props) => {
                 <FontAwesomeIcon icon={faTrash} color="red" />
               </button>
             </div>
-            <div className="boxInfos">
+            <div className="boxInfos" onClick={() => handleShow.show(item)}>
               <Title as="p">{item.title}</Title>
               {item.body.length >= 30 ? (
                 <p>{item.body.substring(0, 200)}... (clique para ver mais)</p>
@@ -86,7 +86,7 @@ const ListNotes = (props) => {
                 <p>{item.body}</p>
               )}
             </div>
-          </div>
+          </button>
         ))}
       </div>
 
