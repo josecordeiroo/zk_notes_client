@@ -32,12 +32,17 @@
 .search{
   color: white;
   label{
-    margin-right: 10px;
+    margin-right: 5px;
   }
   input{
     border-radius: 5px;
     border: none;
   }
+  input::placeholder {
+    padding-left: 5px;
+    font-size: 15px;
+    opacity: .5;
+}
 }
 
 #searchIcon {

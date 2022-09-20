@@ -38,36 +38,22 @@ const HeaderLogged = (props) => {
             className="navbar-item navbar-start"
             align="start"
           >
-            <Navbar.Item as="div">
-              <Button
-                className="open-button"
-                outlined
-                onClick={() => props.setIsOpen(true)}
-              >
-                <Icon size="small" align="left">
-                  <FontAwesomeIcon icon={faList} />
-                </Icon>
-              </Button>
-            </Navbar.Item>
           </Navbar.Segment>
           <Navbar.Segment align="start">
+          </Navbar.Segment>
+
+          <Navbar.Segment align="end">
+            <Button.Group>
             <Navbar.Item dropdown>
               <Navbar.Link>Bem vindo, Zeca Cordeiro</Navbar.Link>
 
               <Navbar.Dropdown>
                 <Navbar.Item>Editar seus dados</Navbar.Item>
                 <Navbar.Divider />
-                <Navbar.Item>Sair</Navbar.Item>
+                <Navbar.Item>Suporte</Navbar.Item>
               </Navbar.Dropdown>
             </Navbar.Item>
-          </Navbar.Segment>
-
-          <Navbar.Segment align="end">
-            <Button.Group>
-              <Link to="/">
-                <Button color="light">Minha Conta</Button>
-              </Link>
-              &nbsp;
+              &nbsp;&nbsp;&nbsp;
               <Link to="/login">
                 <Button onClick={() => UsersService.logout()} color="danger">
                   <strong>Sair</strong>
