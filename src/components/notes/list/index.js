@@ -5,7 +5,7 @@ import Moment from "moment";
 import { Modal, Button, Form } from "react-bootstrap";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTrash, faFilePen } from "@fortawesome/free-solid-svg-icons";
+import { faTrash, faFilePen, faMagnifyingGlass, faSquareXmark } from "@fortawesome/free-solid-svg-icons";
 
 import CreateNote from "../modals/create_note";
 import EditNote from "../modals/edit_note";
@@ -24,7 +24,7 @@ const ListNotes = (props) => {
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
   const [id, setId] = useState("");
-  const [search, setSearch] = useState("")
+  const [search, setSearch] = useState("");
 
   const handleShow = (note, action) => {
     setTitle(note.title);
@@ -38,6 +38,12 @@ const ListNotes = (props) => {
       : action === "setEditShow"
       ? setEditShow(true)
       : setDeleteShow(true);
+  };
+
+  const handleKeyDown = (e) => {
+    if (e.key === "Enter") {
+      props.searchNote(search);
+    }
   };
 
   return (
@@ -63,24 +69,31 @@ const ListNotes = (props) => {
           Criar nota
         </button>
 
-        <Form>
-          <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-            <Form.Label>Pesquisar Nota:</Form.Label>
-            <Form.Control
+        <div>
+          
+            <label>Pesquisar Nota:</label>
+            <input
               placeholder="Digite título ou conteúdo"
               autoFocus
               value={search}
               onChange={(e) => setSearch(e.target.value)}
               type="text"
+              onKeyDown={handleKeyDown}
             />
-            <Button variant="success" onClick={() => props.searchNote(search)}>
-          Pesquisar
-        </Button>
-        <Button variant="success" onClick={() => props.fetchNotes()}>
-          X
-        </Button>
-          </Form.Group>
-        </Form>
+            <button onClick={() => props.searchNote(search)}>
+            <FontAwesomeIcon icon={faMagnifyingGlass} />
+            </button>
+            <button
+              variant="success"
+              onClick={() => {
+                props.fetchNotes();
+                setSearch("");
+              }}
+            >
+              <FontAwesomeIcon icon={faSquareXmark} />
+            </button>
+         
+        </div>
       </div>
       <div className="boxNotes">
         {props.notes.map((item, key) => (
