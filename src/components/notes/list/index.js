@@ -12,6 +12,8 @@ import EditNote from "../modals/edit_note";
 import DeleteNote from "../modals/delete_note";
 import ShowNote from "../modals/show_note";
 
+import "../../../styles/notes.scss";
+
 const ListNotes = (props) => {
   const [createShow, setCreateShow] = useState(false);
   const [editShow, setEditShow] = useState(false);
@@ -59,7 +61,7 @@ const ListNotes = (props) => {
             <p size={6}>{props.notes.length} notas criadas até o momento.</p>
           )}
         </div>
-        <button
+        <button id="createButton"
           state="active"
           color="custom-purple"
           outlined
@@ -69,28 +71,26 @@ const ListNotes = (props) => {
           Criar nota
         </button>
 
-        <div>
-          
+        <div className="search">
             <label>Pesquisar Nota:</label>
             <input
-              placeholder="Digite título ou conteúdo"
-              autoFocus
+              placeholder="Digite o título da nota"
               value={search}
               onChange={(e) => setSearch(e.target.value)}
               type="text"
               onKeyDown={handleKeyDown}
             />
-            <button onClick={() => props.searchNote(search)}>
+            <button id="searchIcon" onClick={() => props.searchNote(search)}>
             <FontAwesomeIcon icon={faMagnifyingGlass} />
             </button>
             <button
-              variant="success"
+              id="cleanIcon"
               onClick={() => {
                 props.fetchNotes();
                 setSearch("");
               }}
             >
-              <FontAwesomeIcon icon={faSquareXmark} />
+              <FontAwesomeIcon icon={faSquareXmark} color="white" />
             </button>
          
         </div>

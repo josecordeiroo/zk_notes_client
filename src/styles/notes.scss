@@ -12,21 +12,48 @@
   display: flex;
   justify-content: space-between;
   padding: 20px 40px 20px 40px;
-  button {
-    background-color: #4caf50;
+}
+
+#createButton {
+  background-color: #4caf50;
+  border: none;
+  width: 150px;
+  height: 60px;
+  border-radius: 10px;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  font-size: 25px;
+  box-shadow: black 5px 5px 10px;
+  margin-right: 30px;
+}
+
+.search{
+  color: white;
+  label{
+    margin-right: 10px;
+  }
+  input{
+    border-radius: 5px;
     border: none;
-    width: 150px;
-    height: 60px;
-    border-radius: 10px;
-    color: white;
-    text-align: center;
-    text-decoration: none;
-    cursor: pointer;
-    font-size: 25px;
-    box-shadow: black 5px 5px 10px;
-    margin-right: 30px;
   }
 }
+
+#searchIcon {
+  background-color: rgb(120, 255, 120);
+  margin: 0 2px 0 5px;
+  border: none;
+  border-radius: 5px;
+}
+
+#cleanIcon {
+  background-color: rgb(255, 64, 64);
+  border: none;
+  border-radius: 5px;
+}
+
+
 
 .headerTexts {
   color: white;
@@ -62,27 +89,28 @@
 }
 
 .boxInfos {
-  p{
+  p {
     text-align: left;
   }
 }
 
-.boxTop{
+.boxTop {
   display: flex;
   justify-content: right;
-  button{
+  button {
     margin: 0 10px 20px 0;
     cursor: pointer;
     border-radius: 5px;
     border: none;
   }
-  button:hover{
+  button:hover {
     box-shadow: rgba(0, 0, 0, 0.201) 1px 1px 10px 1px;
   }
 }
 
 .modal-open {
-  overflow:unset;
-  overflow-y:scroll;
-  padding-right:0 !important;
+  overflow: unset;
+  overflow-y: scroll;
+  padding-right: 0 !important;
 }
+
