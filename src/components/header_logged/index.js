@@ -13,9 +13,8 @@ import { faList } from "@fortawesome/free-solid-svg-icons";
 
 const HeaderLogged = (props) => {
   return (
-    <Container>
-      <Navbar>
-        <Navbar.Brand>
+      <Navbar >
+        <Navbar.Brand >
           <a href="/notes">
             <img
               src={logoImage}
@@ -54,16 +53,15 @@ const HeaderLogged = (props) => {
               </Navbar.Dropdown>
             </Navbar.Item>
               &nbsp;&nbsp;&nbsp;
-              <Link to="/login">
+              {/* <Link to="/login">
                 <Button onClick={() => UsersService.logout()} color="danger">
                   <strong>Sair</strong>
                 </Button>
-              </Link>
+              </Link> */}
             </Button.Group>
           </Navbar.Segment>
         </Navbar.Menu>
       </Navbar>
-    </Container>
   );
 };
 

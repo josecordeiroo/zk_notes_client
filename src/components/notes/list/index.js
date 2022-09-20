@@ -49,9 +49,13 @@ const ListNotes = (props) => {
 
   const handleKeyDown = (e) => {
     if (e.key === "Enter") {
-      props.searchNote(search);
+      searchOptions();
     }
   };
+
+  const searchOptions = () => {
+    search === "" ? props.fetchNotes() : props.searchNote(search)
+  }
 
   return (
     <>
@@ -66,7 +70,7 @@ const ListNotes = (props) => {
               type="text"
               onKeyDown={handleKeyDown}
             />
-            <button id="searchIcon" onClick={() => props.searchNote(search)}>
+            <button id="searchIcon" onClick={() => searchOptions()}>
               <FontAwesomeIcon icon={faMagnifyingGlass} />
             </button>
             <button
@@ -81,9 +85,9 @@ const ListNotes = (props) => {
             {props.notes.length == 0 ? (
               <p size={6}>Você não possui notas ainda. Clique em criar nota.</p>
             ) : props.notes.length == 1 ? (
-              <p size={6}>{props.notes.length} nota criada até o momento.</p>
+              <p size={6}>Você criou {props.notes.length} nota até o momento.</p>
             ) : (
-              <p size={6}>{props.notes.length} notas criadas até o momento.</p>
+              <p size={6}>Você criou {props.notes.length} notas até o momento.</p>
             )}
           </div>
         </div>
@@ -113,7 +117,7 @@ const ListNotes = (props) => {
               className="boxInfos"
               onClick={() => handleShow(item, "setViewShow")}
             >
-              <Title as="p">{item.title}</Title>
+              <h2 as="p">{item.title}</h2>
               {item.body.length >= 30 ? (
                 <p>{item.body.substring(0, 200)}... (clique para ver mais)</p>
               ) : (
