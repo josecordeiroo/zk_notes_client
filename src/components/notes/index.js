@@ -1,5 +1,3 @@
-import { Column } from "rbx";
-import { ColumnGroup } from "rbx/grid/columns/column-group";
 import React, { useState, Fragment, useEffect } from "react";
 
 // import { push as Menu } from "react-burger-menu";
@@ -25,8 +23,8 @@ const Notes = (props) => {
     }
   }
 
-  const createNote = async () => {
-    await NotesServices.create();
+  const createNote = async (note) => {
+    await NotesServices.create(note);
     fetchNotes();
   };
 
@@ -42,19 +40,31 @@ const Notes = (props) => {
     fetchNotes();
   };
 
+  const updateNote = async (id, params) => {
+    await NotesServices.patch(id, params);
+    fetchNotes();
+  };
+
+  const searchNote = async (query) => {
+    const response = await NotesServices.search(query)
+    setNotes(response.data)
+  }
+
   useEffect(() => {
     fetchNotes();
   }, []);
 
   return (
     <Fragment>
-      
       <ListNotes
         notes={notes}
         selectNote={selectNote}
         currentNote={currentNote}
         createNote={createNote}
         deleteNote={deleteNote}
+        updateNote={updateNote}
+        searchNote={searchNote}
+        fetchNotes={fetchNotes}
       ></ListNotes>
     </Fragment>
   );

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Button, Modal, Form } from "react-bootstrap";
 
-function ShowNote({note, show, setShow}) {
+function ShowNote({title, body, show, setShow}) {
   return (
       <Modal
       show={show}
@@ -9,22 +9,13 @@ function ShowNote({note, show, setShow}) {
       size="lg"
     >
      <Modal.Header closeButton>
-          <Modal.Title>{note.title}</Modal.Title>
+          <Modal.Title>{title}</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <p style={{padding: "10px"}}>{note.body}</p>
+          <p style={{padding: "10px"}}>{body}</p>
         </Modal.Body>
-        <Modal.Footer>
-          <Button variant="danger" onClick={() => setShow(false)}>
-            Cancelar
-          </Button>
-          <Button variant="success">
-            Confirmar
-          </Button>
-        </Modal.Footer>
     </Modal>
   );
 }
-
 
 export default ShowNote;

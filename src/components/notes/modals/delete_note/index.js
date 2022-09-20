@@ -1,7 +1,7 @@
 import React from 'react';
 import { Button, Modal, Form } from "react-bootstrap";
 
-function DeleteNote({show, setShow}) {
+function DeleteNote({id, deleteNote, show, setShow}) {
   return (
       <Modal
       show={show}
@@ -11,24 +11,12 @@ function DeleteNote({show, setShow}) {
       size="lg"
     >
      <Modal.Header closeButton>
-          <Modal.Title>Editar Nota</Modal.Title>
+          <Modal.Title>Tem certeza que deseja excluir a nota?</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <Form>
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-              <Form.Label>Título:</Form.Label>
-              <Form.Control
-                type="email"
-                placeholder=""
-                autoFocus
-              />
-            </Form.Group>
-            <Form.Group
-              className="mb-3"
-              controlId="exampleForm.ControlTextarea1"
-            >
-              <Form.Label>Texto:</Form.Label>
-              <Form.Control as="textarea" rows={3} />
+              <Form.Label>Esta ação não poderá ser desfeita.</Form.Label>
             </Form.Group>
           </Form>
         </Modal.Body>
@@ -36,7 +24,7 @@ function DeleteNote({show, setShow}) {
           <Button variant="danger" onClick={() => setShow(false)}>
             Cancelar
           </Button>
-          <Button variant="success">
+          <Button variant="success" onClick={() => {deleteNote(id); setShow(false)}}>
             Confirmar
           </Button>
         </Modal.Footer>

@@ -7,10 +7,10 @@ import { Modal, Button, Form } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash, faFilePen } from "@fortawesome/free-solid-svg-icons";
 
-import CreateNote from "../modals/create_note"
-import EditNote from "../modals/edit_note"
-import DeleteNote from "../modals/delete_note"
-import ShowNote from "../modals/show_note"
+import CreateNote from "../modals/create_note";
+import EditNote from "../modals/edit_note";
+import DeleteNote from "../modals/delete_note";
+import ShowNote from "../modals/show_note";
 
 const ListNotes = (props) => {
   const [createShow, setCreateShow] = useState(false);
@@ -18,31 +18,27 @@ const ListNotes = (props) => {
   const [deleteShow, setDeleteShow] = useState(false);
   const [viewShow, setViewShow] = useState(false);
   const [note, setNote] = useState({
-    "title": "",
-    "body": ""
-  })
+    title: "",
+    body: "",
+  });
+  const [title, setTitle] = useState("");
+  const [body, setBody] = useState("");
+  const [id, setId] = useState("");
+  const [search, setSearch] = useState("")
 
-  const handleShow = {
-    create: (note) => {
-      setNote(note)
-      setCreateShow(true)
-    },
-    edit: (note) => {
-      setNote(note)
-      setEditShow(true)
-    },
-    delete: (note) => {
-      setNote(note)
-      setDeleteShow(true)
-    },
-    show: (note) => {
-      setNote(note)
-      setViewShow(true)
-    }
-    
-  } 
-    
-    
+  const handleShow = (note, action) => {
+    setTitle(note.title);
+    setBody(note.body);
+    setId(note._id);
+
+    action === "setViewShow"
+      ? setViewShow(true)
+      : action === "setCreateShow"
+      ? setCreateShow(true)
+      : action === "setEditShow"
+      ? setEditShow(true)
+      : setDeleteShow(true);
+  };
 
   return (
     <>
@@ -62,23 +58,45 @@ const ListNotes = (props) => {
           color="custom-purple"
           outlined
           size="small"
-          onClick={() => props.createNote()}
+          onClick={() => handleShow(note, "setCreateShow")}
         >
           Criar nota
         </button>
+
+        <Form>
+          <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+            <Form.Label>Pesquisar Nota:</Form.Label>
+            <Form.Control
+              placeholder="Digite título ou conteúdo"
+              autoFocus
+              value={search}
+              onChange={(e) => setSearch(e.target.value)}
+              type="text"
+            />
+            <Button variant="success" onClick={() => props.searchNote(search)}>
+          Pesquisar
+        </Button>
+        <Button variant="success" onClick={() => props.fetchNotes()}>
+          X
+        </Button>
+          </Form.Group>
+        </Form>
       </div>
       <div className="boxNotes">
         {props.notes.map((item, key) => (
           <button className="boxNote" key={key}>
             <div className="boxTop">
-              <button onClick={() => setEditShow(true)}>
+              <button onClick={() => handleShow(item, "setEditShow")}>
                 <FontAwesomeIcon icon={faFilePen} color="success" />
               </button>
-              <button onClick={() => props.deleteNote(item._id)}>
+              <button onClick={() => handleShow(item)}>
                 <FontAwesomeIcon icon={faTrash} color="red" />
               </button>
             </div>
-            <div className="boxInfos" onClick={() => handleShow.show(item)}>
+            <div
+              className="boxInfos"
+              onClick={() => handleShow(item, "setViewShow")}
+            >
               <Title as="p">{item.title}</Title>
               {item.body.length >= 30 ? (
                 <p>{item.body.substring(0, 200)}... (clique para ver mais)</p>
@@ -90,11 +108,33 @@ const ListNotes = (props) => {
         ))}
       </div>
 
-      <CreateNote note={note} show={createShow} setShow={setCreateShow} />
-      <EditNote note={note} show={editShow} setShow={setEditShow} />
-      <DeleteNote note={note} show={deleteShow} setShow={setDeleteShow} />
-      <ShowNote note={note} show={viewShow} setShow={setViewShow} />
-      
+      <CreateNote
+        createNote={props.createNote}
+        show={createShow}
+        setShow={setCreateShow}
+      />
+      <EditNote
+        updateNote={props.updateNote}
+        title={title}
+        setTitle={setTitle}
+        body={body}
+        setBody={setBody}
+        id={id}
+        show={editShow}
+        setShow={setEditShow}
+      />
+      <DeleteNote
+        deleteNote={props.deleteNote}
+        id={id}
+        show={deleteShow}
+        setShow={setDeleteShow}
+      />
+      <ShowNote
+        title={title}
+        body={body}
+        show={viewShow}
+        setShow={setViewShow}
+      />
     </>
   );
 };
