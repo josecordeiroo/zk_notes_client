@@ -76,6 +76,8 @@
 }
 
 .boxNote {
+  display: block;
+  justify-content: space-between;
   background: rgb(255, 255, 255);
   min-height: 30vh;
   max-width: 400px;
@@ -86,6 +88,7 @@
   box-shadow: black 5px 5px 10px;
   margin: 5px;
   padding: 20px;
+  cursor: none;
 }
 
 .boxInfos {
@@ -108,9 +111,17 @@
   }
 }
 
+.boxInfos {
+  width: 80%;
+  height: 80%;
+  cursor: pointer;
+}
+
 .modal-open {
   overflow: unset;
   overflow-y: scroll;
   padding-right: 0 !important;
 }
+
+
 

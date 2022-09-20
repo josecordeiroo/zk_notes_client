@@ -5,7 +5,12 @@ import Moment from "moment";
 import { Modal, Button, Form } from "react-bootstrap";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTrash, faFilePen, faMagnifyingGlass, faSquareXmark } from "@fortawesome/free-solid-svg-icons";
+import {
+  faTrash,
+  faFilePen,
+  faMagnifyingGlass,
+  faSquareXmark,
+} from "@fortawesome/free-solid-svg-icons";
 
 import CreateNote from "../modals/create_note";
 import EditNote from "../modals/edit_note";
@@ -51,27 +56,18 @@ const ListNotes = (props) => {
   return (
     <>
       <div className="headerNotes">
-        <div className="headerTexts">
-          <h1>Seja bem vindo as suas notas, Zeca</h1>
-          {props.notes.length == 0 ? (
-            <p size={6}>Você não possui notas ainda. Clique em criar nota.</p>
-          ) : props.notes.length == 1 ? (
-            <p size={6}>{props.notes.length} nota criada até o momento.</p>
-          ) : (
-            <p size={6}>{props.notes.length} notas criadas até o momento.</p>
-          )}
-        </div>
-        <button id="createButton"
-          state="active"
-          color="custom-purple"
-          outlined
-          size="small"
-          onClick={() => handleShow(note, "setCreateShow")}
-        >
-          Criar nota
-        </button>
-
-        <div className="search">
+        <div>
+          <div className="headerTexts">
+            <h1>Seja bem vindo as suas notas, Zeca</h1>
+            {props.notes.length == 0 ? (
+              <p size={6}>Você não possui notas ainda. Clique em criar nota.</p>
+            ) : props.notes.length == 1 ? (
+              <p size={6}>{props.notes.length} nota criada até o momento.</p>
+            ) : (
+              <p size={6}>{props.notes.length} notas criadas até o momento.</p>
+            )}
+          </div>
+          <div className="search">
             <label>Pesquisar Nota:</label>
             <input
               placeholder="Digite o título da nota"
@@ -81,7 +77,7 @@ const ListNotes = (props) => {
               onKeyDown={handleKeyDown}
             />
             <button id="searchIcon" onClick={() => props.searchNote(search)}>
-            <FontAwesomeIcon icon={faMagnifyingGlass} />
+              <FontAwesomeIcon icon={faMagnifyingGlass} />
             </button>
             <button
               id="cleanIcon"
@@ -92,8 +88,18 @@ const ListNotes = (props) => {
             >
               <FontAwesomeIcon icon={faSquareXmark} color="white" />
             </button>
-         
+          </div>
         </div>
+        <button
+          id="createButton"
+          state="active"
+          color="custom-purple"
+          outlined
+          size="small"
+          onClick={() => handleShow(note, "setCreateShow")}
+        >
+          Criar nota
+        </button>
       </div>
       <div className="boxNotes">
         {props.notes.map((item, key) => (
