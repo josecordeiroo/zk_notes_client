@@ -150,7 +150,7 @@ const RegisterForm = () => {
         <Field kind="group" align="centered">
           <Control>
             <Label>
-              <Checkbox /> Eu aceito os <a href="#terms">termos de uso</a>.
+              <Checkbox required /> Eu aceito os <a href="#terms">termos de uso</a>.
             </Label>
           </Control>
         </Field>

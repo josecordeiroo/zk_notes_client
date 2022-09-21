@@ -1,6 +1,10 @@
 import Api from "./api";
 
 const UsersService = {
+  index: () =>
+    Api.get("/users", {
+      headers: { "x-access-token": localStorage.getItem("token") },
+    }),
   register: (params) => Api.post("/users/register", params),
   login: async (params) => {
     const response = await Api.post("/users/login", params);
@@ -11,6 +15,14 @@ const UsersService = {
     localStorage.removeItem("user", null);
     localStorage.removeItem("token", null);
   },
+  put: (params) =>
+    Api.put(`/users`, params, {
+      headers: { "x-access-token": localStorage.getItem("token") },
+    }),
+  updatePassword: (params) =>
+  Api.put(`/users/password`, params, {
+    headers: { "x-access-token": localStorage.getItem("token") },
+  }),
 };
 
 export default UsersService;

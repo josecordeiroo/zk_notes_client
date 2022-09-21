@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 
 import { Link, Navigate } from "react-router-dom";
 
@@ -12,6 +12,17 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faList } from "@fortawesome/free-solid-svg-icons";
 
 const HeaderLogged = (props) => {
+  const [name, setName] = useState("");
+
+  async function fetchUser() {
+    const response = await UsersService.index();
+    setName(response.data.name);
+  }
+
+  useEffect(() => {
+    fetchUser();
+  }, {});
+
   return (
     <Container>
       <Navbar>
@@ -43,19 +54,19 @@ const HeaderLogged = (props) => {
           <Navbar.Segment align="end">
             <Button.Group>
               <Navbar.Item dropdown>
-                <Navbar.Link>Bem vindo, Zeca Cordeiro</Navbar.Link>
+                <Navbar.Link>Bem vindo, {name}</Navbar.Link>
 
                 <Navbar.Dropdown>
-                  <Link to="/edit">
+                  <Link to="/users/edit">
                     <Navbar.Item>Editar seus dados</Navbar.Item>
-                  </Link>
-                  <Link to="/suporte">
-                    <Navbar.Item>Suporte</Navbar.Item>
                   </Link>
                   <Link to="/">
                     <Navbar.Item>Página Inicial do Site</Navbar.Item>
                   </Link>
                   <Navbar.Divider />
+                  <Link to="/suporte">
+                    <Navbar.Item>Suporte</Navbar.Item>
+                  </Link>
                   <Link onClick={() => UsersService.logout()}>
                     <Navbar.Item>Sair</Navbar.Item>
                   </Link>
