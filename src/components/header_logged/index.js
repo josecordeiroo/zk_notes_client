@@ -13,8 +13,9 @@ import { faList } from "@fortawesome/free-solid-svg-icons";
 
 const HeaderLogged = (props) => {
   return (
-      <Navbar >
-        <Navbar.Brand >
+    <Container>
+      <Navbar>
+        <Navbar.Brand>
           <a href="/notes">
             <img
               src={logoImage}
@@ -36,32 +37,35 @@ const HeaderLogged = (props) => {
             as="div"
             className="navbar-item navbar-start"
             align="start"
-          >
-          </Navbar.Segment>
-          <Navbar.Segment align="start">
-          </Navbar.Segment>
+          ></Navbar.Segment>
+          <Navbar.Segment align="start"></Navbar.Segment>
 
           <Navbar.Segment align="end">
             <Button.Group>
-            <Navbar.Item dropdown>
-              <Navbar.Link>Bem vindo, Zeca Cordeiro</Navbar.Link>
+              <Navbar.Item dropdown>
+                <Navbar.Link>Bem vindo, Zeca Cordeiro</Navbar.Link>
 
-              <Navbar.Dropdown>
-                <Navbar.Item>Editar seus dados</Navbar.Item>
-                <Navbar.Divider />
-                <Navbar.Item>Suporte</Navbar.Item>
-              </Navbar.Dropdown>
-            </Navbar.Item>
-              &nbsp;&nbsp;&nbsp;
-              {/* <Link to="/login">
-                <Button onClick={() => UsersService.logout()} color="danger">
-                  <strong>Sair</strong>
-                </Button>
-              </Link> */}
+                <Navbar.Dropdown>
+                  <Link to="/edit">
+                    <Navbar.Item>Editar seus dados</Navbar.Item>
+                  </Link>
+                  <Link to="/suporte">
+                    <Navbar.Item>Suporte</Navbar.Item>
+                  </Link>
+                  <Link to="/">
+                    <Navbar.Item>Página Inicial do Site</Navbar.Item>
+                  </Link>
+                  <Navbar.Divider />
+                  <Link onClick={() => UsersService.logout()}>
+                    <Navbar.Item>Sair</Navbar.Item>
+                  </Link>
+                </Navbar.Dropdown>
+              </Navbar.Item>
             </Button.Group>
           </Navbar.Segment>
         </Navbar.Menu>
       </Navbar>
+    </Container>
   );
 };
 

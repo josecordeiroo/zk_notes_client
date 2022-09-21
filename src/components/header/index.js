@@ -20,7 +20,7 @@ const Header = () => {
               // height="28"
               style={{
                 width: "130px",
-                margin: "10px 10px 0 20px"
+                margin: "10px 10px 0 20px",
               }}
             />
           </a>
@@ -47,7 +47,6 @@ const Header = () => {
                   <strong>Criar conta</strong>
                 </Button>
               </Link>
-              &nbsp;
               <Link to="/login">
                 <Button color="light">Entrar</Button>
               </Link>

@@ -13,6 +13,18 @@ const LoginForm = () => {
   const [redirectToNotes, setRedirectToNotes] = useState(false);
   const [error, setError] = useState(false);
 
+  const [passwordShown, setPasswordShown] = useState(false);
+  const [passwordText, setPasswordText] = useState("Mostrar Senha")
+
+  
+
+  const togglePassword = () => {
+    setPasswordShown(!passwordShown);
+
+    passwordShown ? setPasswordText("Mostrar Senha") : setPasswordText("Esconder Senha")
+    
+  };
+
   const HandleSubmit = async (evt) => {
     evt.preventDefault();
     try {
@@ -41,7 +53,7 @@ const LoginForm = () => {
               required
               defaultValue=""
               placeholder="Digite seu E-mail"
-              type="text"
+              type="email"
             />
             <Icon size="small" align="left">
               <FontAwesomeIcon icon={faUser} />
@@ -55,7 +67,7 @@ const LoginForm = () => {
 
         <Field>
           <Label>Senha:</Label>
-          <Control iconLeft iconRight>
+          <Control iconLeft>
             <Input
               //   color="danger"
               value={password}
@@ -63,17 +75,18 @@ const LoginForm = () => {
               required
               defaultValue=""
               placeholder="Digite sua Senha"
-              type="text"
+              type={passwordShown ? "text" : "password"}
             />
             <Icon size="small" align="left">
               <FontAwesomeIcon icon={faLock} />
             </Icon>
-            {/* <Icon size="small" align="right">
-              <FontAwesomeIcon icon={faExclamationTriangle} />
-            </Icon> */}
+            
+            
           </Control>
-          {/* <Help color="danger">This email is invalid</Help> */}
+          
+          
         </Field>
+        <div style={{cursor: "pointer", textAlign: "right", marginBottom: "15px", fontSize: "13px"}} onClick={() => togglePassword()}>{passwordText}</div>
 
         <Field kind="group" align="centered">
           <Control>
