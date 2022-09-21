@@ -39,6 +39,7 @@ const UserEdit = () => {
   const [password, setPassword] = useState("");
   const [error, setError] = useState(false);
   const [success, setSucces] = useState(false);
+  const [passwordSuccess, setPasswordSucces] = useState(false);
   const [id, setId] = useState("");
   const [editShow, setEditShow] = useState(false);
 
@@ -61,6 +62,22 @@ const UserEdit = () => {
         userName: userName,
       });
       setSucces(true);
+    } catch (error) {
+      setError(true);
+    }
+  };
+
+  const HandleSubmitPassword = async (e) => {
+    
+    try {
+      await UsersService.updatePassword(id, {
+        password: password
+      });
+      setPasswordSucces(true);
+      setTimeout(() => {
+        UsersService.logout()
+        window.location.reload(false);
+      }, 5000);      
     } catch (error) {
       setError(true);
     }
@@ -133,7 +150,6 @@ const UserEdit = () => {
           <Label>E-mail:</Label>
           <Control iconLeft iconRight>
             <Input
-              //   color="danger"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               defaultValue=""
@@ -143,11 +159,7 @@ const UserEdit = () => {
             <Icon size="small" align="left">
               <FontAwesomeIcon icon={faEnvelope} />
             </Icon>
-            {/* <Icon size="small" align="right">
-              <FontAwesomeIcon icon={faExclamationTriangle} />
-            </Icon> */}
           </Control>
-          {/* <Help color="danger">This email is invalid</Help> */}
         </Field>
 
         <Field kind="group" align="right">
@@ -159,6 +171,9 @@ const UserEdit = () => {
         {success && (
           <Help color="success">Cadastro atualizado com sucesso</Help>
         )}
+        {passwordSuccess && (
+          <Help color="success">Sua senha foi alterada. Você está sendo desconectado. Por favor, faça o login novamente...</Help>
+        )}
       </form>
       <br />
       <Field>
@@ -169,12 +184,17 @@ const UserEdit = () => {
         </Control>
       </Field>
 
-      <ChangePassword>
+      <ChangePassword
+        // error={error}
+        // setError={setError}
+        // success={success}
+        // setSucces={setSucces}
+        HandleSubmitPassword={HandleSubmitPassword}
         password={password}
         setPassword={setPassword}
         show={editShow}
         setShow={setEditShow}
-      </ChangePassword>
+      />
     </Container>
   );
 };

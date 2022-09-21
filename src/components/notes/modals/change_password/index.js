@@ -24,7 +24,16 @@ import {
   faSignature,
 } from "@fortawesome/free-solid-svg-icons";
 
-function ChangePassword({ password, setPassword, show, setShow }) {
+import UsersService from "../../../../services/users";
+
+function ChangePassword({ HandleSubmitPassword, password, setPassword, show, setShow }) {
+  
+  const handleSubmit = () => {
+    HandleSubmitPassword()
+    setShow(false)
+    setPassword(" ")
+  }
+  
   return (
     <Modal
       show={show}
@@ -34,7 +43,7 @@ function ChangePassword({ password, setPassword, show, setShow }) {
       size="lg"
     >
       <Modal.Header closeButton>
-        <Modal.Title>Digite a nova senha:</Modal.Title>
+        <Modal.Title>Digite sua nova senha:</Modal.Title>
       </Modal.Header>
       <Modal.Body>
         <Field>
@@ -46,7 +55,7 @@ function ChangePassword({ password, setPassword, show, setShow }) {
               onChange={(e) => setPassword(e.target.value)}
               required
               defaultValue=""
-              placeholder="Digite sua senha"
+              placeholder="Digite sua nova senha"
               type="text"
             />
             <Icon size="small" align="left">
@@ -59,12 +68,7 @@ function ChangePassword({ password, setPassword, show, setShow }) {
         <Button variant="danger" onClick={() => setShow(false)}>
           Cancelar
         </Button>
-        <Button
-          variant="success"
-          
-        >
-          Confirmar
-        </Button>
+        <Button onClick={() => handleSubmit()} variant="success">Confirmar</Button>
       </Modal.Footer>
     </Modal>
   );

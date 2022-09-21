@@ -19,8 +19,8 @@ const UsersService = {
     Api.put(`/users`, params, {
       headers: { "x-access-token": localStorage.getItem("token") },
     }),
-  updatePassword: (params) =>
-  Api.put(`/users/password`, params, {
+  updatePassword: (id, params) =>
+  Api.put(`/users/password/${id}`, params, {
     headers: { "x-access-token": localStorage.getItem("token") },
   }),
 };
