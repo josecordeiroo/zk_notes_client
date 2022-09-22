@@ -13,13 +13,16 @@ const Register = () => (
   <Fragment>
     <Fragment>
       <Header />
-      <Section size="medium" className="auth">
+      <Section size="small" className="auth">
         <Container>
           <Column.Group centered>
             <Column size={3}>
               <Card className="card">
-                <Card.Content>
-                    <img className="imagem" src={logoImage} alt="" width={"150px"}/>
+                <Card.Content className="cardContent">
+                  <div className="logoZk">
+                    <img src={logoImage} alt="" />
+                  </div>
+
                   <p
                     style={{
                       color: "gray",

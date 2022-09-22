@@ -31,6 +31,7 @@ import {
   faExclamationTriangle,
   faLock,
   faSignature,
+  faArrowLeft
 } from "@fortawesome/free-solid-svg-icons";
 
 const UserEdit = () => {
@@ -121,7 +122,7 @@ const UserEdit = () => {
         <Control>
           <a href="/notes">
             <p style={{ color: "gray" }} color="danger">
-              Voltar
+            <FontAwesomeIcon icon={faArrowLeft}/> Voltar 
             </p>
           </a>
         </Control>
