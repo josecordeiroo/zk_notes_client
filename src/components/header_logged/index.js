@@ -28,15 +28,14 @@ const HeaderLogged = (props) => {
       <Navbar>
         <Navbar.Brand>
           <a href="/notes">
-            <img
+          <img
               src={logoImage}
               alt=""
               // role="presentation"
               // width="112"
               // height="28"
               style={{
-                width: "130px",
-                margin: "10px 10px 0 20px",
+                width: "110px",
               }}
             />
           </a>
@@ -57,6 +56,9 @@ const HeaderLogged = (props) => {
                 <Navbar.Link>Bem vindo, {name}</Navbar.Link>
 
                 <Navbar.Dropdown>
+                <Link to="/notes">
+                    <Navbar.Item>Suas notas</Navbar.Item>
+                  </Link>
                   <Link to="/users/edit">
                     <Navbar.Item>Editar seus dados</Navbar.Item>
                   </Link>

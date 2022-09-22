@@ -19,8 +19,7 @@ const Header = () => {
               // width="112"
               // height="28"
               style={{
-                width: "130px",
-                margin: "10px 10px 0 20px",
+                width: "110px",
               }}
             />
           </a>
@@ -29,15 +28,9 @@ const Header = () => {
         </Navbar.Brand>
         <Navbar.Menu>
           <Navbar.Segment align="start">
-            <Navbar.Item href="/">Início</Navbar.Item>
-            <Navbar.Item dropdown>
-              <Navbar.Link>Mais</Navbar.Link>
-              <Navbar.Dropdown>
-                <Navbar.Item>Sobre</Navbar.Item>
-                <Navbar.Divider />
-                <Navbar.Item>Contato</Navbar.Item>
-              </Navbar.Dropdown>
-            </Navbar.Item>
+            <Navbar.Item href="/">Sobre</Navbar.Item>
+            <Navbar.Divider />
+            <Navbar.Item href="/">Contato</Navbar.Item>
           </Navbar.Segment>
 
           <Navbar.Segment align="end">

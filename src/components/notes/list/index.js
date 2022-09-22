@@ -58,9 +58,10 @@ const ListNotes = (props) => {
   }
 
   return (
-    <>
+    <div className="divMaster">
+    <h1 id="titlePage" >Painel Administrativo</h1>
       <div className="headerNotes">
-        <div>
+        
           <div className="search">
             <label>Pesquisar Nota:</label>
             <input
@@ -90,7 +91,7 @@ const ListNotes = (props) => {
               <p size={6}>Você criou {props.notes.length} notas até o momento.</p>
             )}
           </div>
-        </div>
+        
         <button
           id="createButton"
           state="active"
@@ -155,7 +156,7 @@ const ListNotes = (props) => {
         show={viewShow}
         setShow={setViewShow}
       />
-    </>
+    </div>
   );
 };
 

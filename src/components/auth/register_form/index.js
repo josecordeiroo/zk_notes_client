@@ -14,6 +14,7 @@ import {
   Checkbox,
   Radio,
   Button,
+  Container
 } from "rbx";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -52,7 +53,7 @@ const RegisterForm = () => {
   if (redirectToLogin) return <Navigate to={{ pathname: "/login" }} />;
 
   return (
-    <>
+    <Container>
       <form onSubmit={HandleSubmit}>
         <Field>
           <Label>Nome:</Label>
@@ -183,7 +184,7 @@ const RegisterForm = () => {
           </a>
         </Control>
       </Field>
-    </>
+    </Container>
   );
 };
 
