@@ -6,6 +6,7 @@ import NotesServices from "../../../services/notes";
 import HeaderLogged from "../../../components/header_logged";
 
 import ChangePassword from "../../../components/notes/modals/change_password";
+import DeleteUser from "../../../components/notes/modals/delete_user";
 
 import {
   Field,
@@ -42,6 +43,7 @@ const UserEdit = () => {
   const [passwordSuccess, setPasswordSucces] = useState(false);
   const [id, setId] = useState("");
   const [editShow, setEditShow] = useState(false);
+  const [editShowDelete, setEditShowDelete] = useState(false);
 
   async function fetchUser() {
     const response = await UsersService.index();
@@ -68,16 +70,25 @@ const UserEdit = () => {
   };
 
   const HandleSubmitPassword = async (e) => {
-    
     try {
       await UsersService.updatePassword(id, {
-        password: password
+        password: password,
       });
       setPasswordSucces(true);
       setTimeout(() => {
-        UsersService.logout()
+        UsersService.logout();
         window.location.reload(false);
-      }, 5000);      
+      }, 5000);
+    } catch (error) {
+      setError(true);
+    }
+  };
+
+  const HandleDelete = async (e) => {
+    try {
+      await UsersService.delete(id);
+      UsersService.logout();
+      window.location.reload(false);
     } catch (error) {
       setError(true);
     }
@@ -172,23 +183,33 @@ const UserEdit = () => {
           <Help color="success">Cadastro atualizado com sucesso</Help>
         )}
         {passwordSuccess && (
-          <Help color="success">Sua senha foi alterada. Você está sendo desconectado. Por favor, faça o login novamente...</Help>
+          <Help color="success">
+            Sua senha foi alterada. Você está sendo desconectado. Por favor,
+            faça o login novamente...
+          </Help>
         )}
       </form>
       <br />
       <Field>
-        <Control iconLeft iconRight>
-          <Button onClick={() => setEditShow(true)}>
-            Alterar senha <FontAwesomeIcon icon={faLock} color="gray" />
+        <Control>
+          <Button onClick={() => setEditShow(true)}>Alterar senha</Button>
+        </Control>
+      </Field>
+      <Field>
+        <Control>
+          <Button color="danger" onClick={() => setEditShowDelete(true)}>
+            Excluir conta
           </Button>
         </Control>
       </Field>
 
+      <DeleteUser
+        HandleDelete={HandleDelete}
+        show={editShowDelete}
+        setShow={setEditShowDelete}
+      />
+
       <ChangePassword
-        // error={error}
-        // setError={setError}
-        // success={success}
-        // setSucces={setSucces}
         HandleSubmitPassword={HandleSubmitPassword}
         password={password}
         setPassword={setPassword}

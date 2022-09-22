@@ -23,6 +23,10 @@ const UsersService = {
   Api.put(`/users/password/${id}`, params, {
     headers: { "x-access-token": localStorage.getItem("token") },
   }),
+  delete: (id) =>
+  Api.delete(`/users/delete/${id}`, {
+    headers: { "x-access-token": localStorage.getItem("token") },
+  }),
 };
 
 export default UsersService;
